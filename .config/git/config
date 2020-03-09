@@ -1,0 +1,11 @@
+[user]
+    name = Zheng He Hu
+    email = aeonzh@hotmail.com
+    signingkey = CE5036D3D0297ACD
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+[color]
+    ui = auto
+[commit]
+    gpgsign = true

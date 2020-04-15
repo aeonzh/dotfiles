@@ -7,7 +7,6 @@ alias dots='git --git-dir=$HOME/src/dotfiles --work-tree=$HOME'
 alias yabai-off="launchctl unload ~/Library/LaunchAgents/org.nixos.yabai.plist; launchctl unload ~/Library/LaunchAgents/org.nixos.skhd.plist"
 alias yabai-on="launchctl load ~/Library/LaunchAgents/org.nixos.yabai.plist; launchctl load ~/Library/LaunchAgents/org.nixos.skhd.plist"
 alias ls="exa -la --group-directories-first --icons"
-alias kitty="open /Applications/kitty.app"
 alias tf="terraform"
 alias circleci="circleci-cli"
 alias g="git"
@@ -104,4 +103,7 @@ restart()
 {
     launchctl kickstart -k "gui/${UID}/$1"
 }
+# Ruby
+PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
 

@@ -3,7 +3,6 @@
     email = aeonzh@hotmail.com
 [core]
     excludesfile = ~/.gitignore
-    editor = vim
 [color]
     ui = auto
 

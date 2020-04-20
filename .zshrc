@@ -10,7 +10,6 @@ alias ls="exa -la --group-directories-first --icons"
 alias tf="terraform"
 alias circleci="circleci-cli"
 alias g="git"
-alias k="kubectl"
 
 # Autocompletion
 fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
@@ -99,11 +98,37 @@ export VIMCONFIG=$HOME'/.vim/'
 export EDITOR=nvim
 
 # Restart service (for yabai, skhd)
-restart()
-{
+restart() {
     launchctl kickstart -k "gui/${UID}/$1"
 }
+
 # Ruby
 PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
+
+# Kubernetes
+alias k="kubectl"
+source <(kubectl completion zsh)
+complete -F __start_kubectl k
+
+kctx() {
+    kubectl config use $@
+}
+
+kns() {
+    if [[ -z "$@" ]]; then
+        kubectl get namespaces
+    else
+        if [[ "$#" -eq 1 ]]; then
+            kubectl config set-context --current --namespace=$@
+        else
+            echo "error: choose only one namespace ($# found)."
+        fi
+    fi
+}
+
+kx() {
+    pod_name="$1"
+    kubectl exec -it $pod_name -- bash
+}
 

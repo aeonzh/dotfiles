@@ -1,18 +1,8 @@
 # Nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then source $HOME/.nix-profile/etc/profile.d/nix.sh; fi
 
-# Aliases
-alias delds="fd -H .DS_Store -x rm"
-alias dots='git --git-dir=$HOME/src/dotfiles --work-tree=$HOME'
-alias yabai-off="launchctl unload ~/Library/LaunchAgents/org.nixos.yabai.plist; launchctl unload ~/Library/LaunchAgents/org.nixos.skhd.plist"
-alias yabai-on="launchctl load ~/Library/LaunchAgents/org.nixos.yabai.plist; launchctl load ~/Library/LaunchAgents/org.nixos.skhd.plist"
-alias ls="exa -la --group-directories-first --icons"
-alias tf="terraform"
-alias circleci="circleci-cli"
-alias g="git"
-
 # Autocompletion
-fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
+fpath+=$HOME/.nix-profile/share/zsh/site-functions
 autoload -Uz compinit && compinit
 
 # Options
@@ -88,11 +78,6 @@ source $HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh syntax
 source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-eval "$(starship init zsh)"
-
-# direnv
-eval "$(direnv hook zsh)"
-
 # NeoVim
 export VIMCONFIG=$HOME'/.vim/'
 export EDITOR=nvim
@@ -103,8 +88,12 @@ restart() {
 }
 
 # Ruby
-PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
+source $HOME/.nix-profile/share/chruby/chruby.sh
+source $HOME/.nix-profile/share/chruby/auto.sh
+# Add to prompt with precmd
+if [[ ! "$precmd_functions" == *chruby_auto* ]]; then
+    precmd_functions+=("chruby_auto")
+fi
 
 # Kubernetes
 alias k="kubectl"
@@ -131,4 +120,20 @@ kx() {
     pod_name="$1"
     kubectl exec -it $pod_name -- bash
 }
+
+
+# Aliases
+alias delds="fd -H .DS_Store -x rm"
+alias dots='git --git-dir=$HOME/src/dotfiles --work-tree=$HOME'
+alias yabai-off="launchctl unload ~/Library/LaunchAgents/org.nixos.yabai.plist; launchctl unload ~/Library/LaunchAgents/org.nixos.skhd.plist"
+alias yabai-on="launchctl load ~/Library/LaunchAgents/org.nixos.yabai.plist; launchctl load ~/Library/LaunchAgents/org.nixos.skhd.plist"
+alias ls="exa -la --group-directories-first --icons"
+alias tf="terraform"
+alias circleci="circleci-cli"
+alias g="git"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+eval "$(starship init zsh)"
 

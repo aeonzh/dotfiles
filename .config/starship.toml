@@ -1,2 +1,4 @@
-[aws]
-disabled = true
+[kubernetes]
+symbol = "⛵ "
+disabled = false
+

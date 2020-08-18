@@ -1,0 +1,20 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": [
+        "*"
+    ],
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-ls",
+            "args": [
+                "serve"
+            ],
+            "filetypes": [
+                "terraform",
+                "tf",
+                "tfvars"
+            ],
+            "initializationOptions": {}
+        }
+    },
+    "solargraph.formatting": true
+}

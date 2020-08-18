@@ -82,11 +82,6 @@ source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.
 export VIMCONFIG=$HOME'/.vim/'
 export EDITOR=nvim
 
-# Restart service (for yabai, skhd)
-restart() {
-    launchctl kickstart -k "gui/${UID}/$1"
-}
-
 # Ruby
 source $HOME/.nix-profile/share/chruby/chruby.sh
 source $HOME/.nix-profile/share/chruby/auto.sh
@@ -117,16 +112,13 @@ kns() {
 }
 
 kx() {
-    pod_name="$1"
-    kubectl exec -it $pod_name -- bash
+    kubectl exec -it $1 -- bash
 }
 
 
 # Aliases
 alias delds="fd -H .DS_Store -x rm"
 alias dots='git --git-dir=$HOME/src/dotfiles --work-tree=$HOME'
-alias yabai-off="launchctl unload ~/Library/LaunchAgents/org.nixos.yabai.plist; launchctl unload ~/Library/LaunchAgents/org.nixos.skhd.plist"
-alias yabai-on="launchctl load ~/Library/LaunchAgents/org.nixos.yabai.plist; launchctl load ~/Library/LaunchAgents/org.nixos.skhd.plist"
 alias ls="exa -la --group-directories-first --icons"
 alias tf="terraform"
 alias circleci="circleci-cli"

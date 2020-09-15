@@ -96,12 +96,16 @@ source <(kubectl completion zsh)
 complete -F __start_kubectl k
 
 kctx() {
-    kubectl config use $@
+    if [[ -z "$@" ]]; then
+        kubectl config use $( kubectl config get-contexts -o name | fzf )
+    else
+        kubectl config use $@
+    fi
 }
 
 kns() {
     if [[ -z "$@" ]]; then
-        kubectl get namespaces
+        kubectl config set-context --current --namespace=$( kubectl get namespaces -o name | sed 's/^namespace\///g' | fzf )
     else
         if [[ "$#" -eq 1 ]]; then
             kubectl config set-context --current --namespace=$@
@@ -112,7 +116,11 @@ kns() {
 }
 
 kx() {
-    kubectl exec -it $1 -- bash
+    if [[ -z "$@" ]]; then
+        kubectl exec -it $( kubectl get pod -o name | sed 's/^pod\///' | fzf ) -- bash
+    else
+        kubectl exec -it $1 -- bash
+    fi
 }
 
 
@@ -128,4 +136,20 @@ alias g="git"
 eval "$(direnv hook zsh)"
 
 eval "$(starship init zsh)"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('$HOME/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

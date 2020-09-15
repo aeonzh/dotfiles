@@ -44,11 +44,11 @@ _gen_fzf_default_opts() {
     local color0E='05'
     local color0F='14'
 
-    export FZF_DEFAULT_OPTS="
-      --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
-      --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C
-      --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D
-    "
+    export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+     --color=fg:#cbccc6,bg:#1f2430,hl:#707a8c
+     --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66
+     --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6
+     --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff'
 
 }
 

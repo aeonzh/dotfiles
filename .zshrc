@@ -59,7 +59,7 @@ n()
 {
     export NNN_TMPFILE=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd
 
-    nnn -dH"$@"
+    nnn -ndH"$@"
 
     if [ -f $NNN_TMPFILE ]; then
             . $NNN_TMPFILE

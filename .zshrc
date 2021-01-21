@@ -59,13 +59,15 @@ n()
 {
     export NNN_TMPFILE=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd
 
-    nnn -ndH"$@"
+    nnn -nadH"$@"
 
     if [ -f $NNN_TMPFILE ]; then
             . $NNN_TMPFILE
             rm $NNN_TMPFILE
     fi
 }
+
+export NNN_PLUG='o:preview-tui'
 
 # z.lua (Installed from nixpkgs)
 export _ZL_CMD=j

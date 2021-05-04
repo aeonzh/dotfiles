@@ -1,8 +1,15 @@
-# Nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then source $HOME/.nix-profile/etc/profile.d/nix.sh; fi
+# Using Nix or Homebrew
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
+    PKGS_PREFIX=$HOME/.nix-profile
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+if type brew &>/dev/null; then
+    PKGS_PREFIX=$(brew --prefix)
+fi
 
 # Autocompletion
-fpath+=$HOME/.nix-profile/share/zsh/site-functions
+fpath+=$PKGS_PREFIX/share/zsh/site-functions
+
 autoload -Uz compinit && compinit
 
 # Options
@@ -72,21 +79,23 @@ export NNN_PLUG='o:preview-tui'
 # z.lua (Installed from nixpkgs)
 export _ZL_CMD=j
 export _ZL_DATA='~/.cache/z.lua'
-eval "$(z --init zsh enhanced once fzf)"
+if [ -d $HOME/.nix-profile ]; then eval "$(z --init zsh enhanced once fzf)"; fi
+if type brew &>/dev/null; then eval "$(lua /opt/homebrew/share/z.lua/z.lua --init zsh enhanced once fzf)"; fi
 
 # autosuggestions
-source $HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $PKGS_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh syntax
-source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $PKGS_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # NeoVim
 export VIMCONFIG=$HOME'/.vim/'
 export EDITOR=nvim
 
 # Ruby
-source $HOME/.nix-profile/share/chruby/chruby.sh
-source $HOME/.nix-profile/share/chruby/auto.sh
+source $PKGS_PREFIX/share/chruby/chruby.sh
+source $PKGS_PREFIX/share/chruby/auto.sh
+
 # Add to prompt with precmd
 if [[ ! "$precmd_functions" == *chruby_auto* ]]; then
     precmd_functions+=("chruby_auto")

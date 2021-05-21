@@ -15,7 +15,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'numirias/semshi', has('nvim') ? { 'do': ':UpdateRemotePlugins' } : { 'on': [] }
 
 Plug 'lilydjwg/colorizer', { 'on': 'ColorHighlight' }
 call plug#end()
@@ -150,28 +149,6 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 " }}}
-
-" {{{ Python
-let g:python_highlight_all = 1
-
-function SemshiColors()
-    hi semshiLocal              ctermfg=209 guifg=#FF875F
-    hi semshiGlobal             ctermfg=214 guifg=#FFCB6B
-    hi semshiImported           ctermfg=006 guifg=#89DDFF cterm=bold gui=bold
-    hi semshiParameter          ctermfg=014 guifg=#F07178
-    hi semshiParameterUnused    ctermfg=117 guifg=#89DDFF cterm=underline gui=underline
-    hi semshiFree               ctermfg=218 guifg=#C792EA
-    hi semshiBuiltin            ctermfg=004 guifg=#82AAFF
-    hi semshiAttribute          ctermfg=049 guifg=#C3E88D
-    hi semshiSelf               ctermfg=249 guifg=#8796B0
-    hi semshiUnresolved         ctermfg=226 guifg=#FFCB6B cterm=underline gui=underline
-    hi semshiSelected           ctermfg=015 guifg=#FFFFFF ctermbg=9 guibg=#FF875F
-    
-    hi semshiErrorSign          ctermfg=231 guifg=#FFFFFF ctermbg=160 guibg=#FF5370
-    hi semshiErrorChar          ctermfg=231 guifg=#FFFFFF ctermbg=160 guibg=#FF5370
- endfunction
- autocmd FileType python call SemshiColors()
-" }}}}}}
 
 " -- Languages --
 " YAML

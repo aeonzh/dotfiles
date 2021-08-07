@@ -8,6 +8,7 @@ endif
 call plug#begin('~/.vim/bundle')
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'romainl/vim-cool'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -89,7 +90,8 @@ if has('termguicolors')
   set termguicolors
 endif
 
-colorscheme palenight
+colorscheme tokyonight
+let g:tokyonight_style = "night"
 set background=dark
 
 " -- 🌷 Goyo --

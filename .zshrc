@@ -140,7 +140,6 @@ alias delds="fd -H .DS_Store -x rm"
 alias dots='git --git-dir=$HOME/src/dotfiles --work-tree=$HOME'
 alias ls="exa -la --group-directories-first --icons"
 alias tf="terraform"
-alias circleci="circleci-cli"
 alias g="git"
 
 # direnv

@@ -31,39 +31,12 @@ setopt SHARE_HISTORY
 # FZF
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
-
-_gen_fzf_default_opts() {
-
-    local color00='00'
-    local color01='10'
-    local color02='11'
-    local color03='08'
-    local color04='12'
-    local color05='07'
-    local color06='13'
-    local color07='15'
-    local color08='01'
-    local color09='09'
-    local color0A='03'
-    local color0B='02'
-    local color0C='06'
-    local color0D='04'
-    local color0E='05'
-    local color0F='14'
-
-    export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-     --color=fg:#cbccc6,bg:#1f2430,hl:#707a8c
-     --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66
-     --color=info:#73d0ff,prompt:#707a8c,pointer:#cbccc6
-     --color=marker:#73d0ff,spinner:#73d0ff,header:#d4bfff'
-
-}
+export FZF_DEFAULT_OPTS='--color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
 
 _gen_fzf_default_opts
 
 # NNN
-n()
-{
+n() {
     export NNN_TMPFILE=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd
 
     nnn -nadH"$@"
@@ -76,7 +49,7 @@ n()
 
 export NNN_PLUG='o:preview-tui'
 
-# z.lua (Installed from nixpkgs)
+# z.lua
 export _ZL_CMD=j
 export _ZL_DATA='~/.cache/z.lua'
 if [ -d $HOME/.nix-profile ]; then eval "$(z --init zsh enhanced once fzf)"; fi
@@ -96,6 +69,10 @@ export EDITOR=nvim
 source $PKGS_PREFIX/share/chruby/chruby.sh
 source $PKGS_PREFIX/share/chruby/auto.sh
 
+# Ruby
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
 # Add to prompt with precmd
 if [[ ! "$precmd_functions" == *chruby_auto* ]]; then
     precmd_functions+=("chruby_auto")
@@ -104,11 +81,11 @@ fi
 # Kubernetes
 alias k="kubectl"
 source <(kubectl completion zsh)
-complete -F __start_kubectl k
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 kctx() {
     if [[ -z "$@" ]]; then
-        kubectl config use $( kubectl config get-contexts -o name | fzf )
+        kubectl config use $(kubectl config get-contexts -o name | fzf)
     else
         kubectl config use $@
     fi
@@ -116,7 +93,7 @@ kctx() {
 
 kns() {
     if [[ -z "$@" ]]; then
-        kubectl config set-context --current --namespace=$( kubectl get namespaces -o name | sed 's/^namespace\///g' | fzf )
+        kubectl config set-context --current --namespace=$(kubectl get namespaces -o jsonpath="{range .items[*]}{.metadata.name}{'\n'}{end}" | fzf)
     else
         if [[ "$#" -eq 1 ]]; then
             kubectl config set-context --current --namespace=$@
@@ -128,7 +105,7 @@ kns() {
 
 kx() {
     if [[ -z "$@" ]]; then
-        kubectl exec -it $( kubectl get pod -o name | sed 's/^pod\///' | fzf ) -- bash
+        kubectl exec -it $(kubectl get pod -o jsonpath="{range .items[*]}{.metadata.name}{'\n'}{end}" | fzf) -- bash
     else
         kubectl exec -it $1 -- bash
     fi
@@ -146,4 +123,12 @@ alias g="git"
 eval "$(direnv hook zsh)"
 
 eval "$(starship init zsh)"
+
+tfws() {
+    if [[ -z "$@" ]]; then
+        terraform workspace select $(terraform workspace list | fzf)
+    else
+        terraform workspace select $1
+    fi
+}
 

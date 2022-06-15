@@ -1,4 +1,4 @@
 [kubernetes]
 symbol = "⛵ "
-disabled = false
+disabled = true
 

@@ -5,11 +5,12 @@
     excludesfile = ~/.gitignore
 [color]
     ui = auto
-
 [pull]
 	ff = only
 [init]
 	defaultBranch = main
+[alias]
+    gone = ! "git fetch --all --prune && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

@@ -67,7 +67,7 @@ export EDITOR=nvim
 source $PKGS_PREFIX/share/chruby/chruby.sh
 source $PKGS_PREFIX/share/chruby/auto.sh
 
-# Ruby
+# Go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 

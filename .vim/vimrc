@@ -6,7 +6,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'romainl/vim-cool'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
@@ -16,6 +15,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'towolf/vim-helm'
 
 Plug 'lilydjwg/colorizer', { 'on': 'ColorHighlight' }
 call plug#end()
@@ -69,14 +69,6 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>l :Lines<CR>
 
 nnoremap <leader>g :Goyo<CR>
-
-" -- CoC --
-" Use <Tab> and <S-Tab> to navigate the completion list
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" Format your code on <cr>
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 " }}}
 
 " {{{ -- UI --

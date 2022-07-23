@@ -3,6 +3,7 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     PKGS_PREFIX=$HOME/.nix-profile
     source $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 if type brew &>/dev/null; then
     PKGS_PREFIX=$(brew --prefix)
 fi

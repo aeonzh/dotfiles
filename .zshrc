@@ -51,7 +51,7 @@ export NNN_PLUG='o:preview-tui'
 export _ZL_CMD=j
 export _ZL_DATA='~/.cache/z.lua'
 if [ -d $HOME/.nix-profile ]; then eval "$(z --init zsh enhanced once fzf)"; fi
-if type brew &>/dev/null; then eval "$(lua /opt/homebrew/share/z.lua/z.lua --init zsh enhanced once fzf)"; fi
+if type brew &>/dev/null; then eval "$(lua $PKGS_PREFIX/share/z.lua/z.lua --init zsh enhanced once fzf)"; fi
 
 # autosuggestions
 source $PKGS_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -109,6 +109,18 @@ kx() {
     fi
 }
 
+helm-diff() {
+    current_chart_folder=${PWD##*/}
+    current_kubernetes_namespace=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+    current_environment=${current_kubernetes_namespace##*-}
+    release_name=$(helm ls -n "${current_kubernetes_namespace}" | grep $current_chart_folder | awk '{print $1}')
+    var_path="vars"
+    if [[ ! -d "${var_path}" ]]
+    then
+        var_path=${PWD//\/charts\//\/vars\/}
+    fi
+    helm diff upgrade "${release_name}" ./ -f "${var_path}/values.${current_environment}.yaml" --three-way-merge
+}
 
 # Aliases
 alias delds="fd -H .DS_Store -x rm"

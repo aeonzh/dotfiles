@@ -1,8 +1,4 @@
-# Using Nix or Homebrew
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
-    PKGS_PREFIX=$HOME/.nix-profile
-    source $HOME/.nix-profile/etc/profile.d/nix.sh
-fi
+# Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 if type brew &>/dev/null; then
     PKGS_PREFIX=$(brew --prefix)
@@ -65,6 +61,7 @@ export VIMCONFIG=$HOME'/.vim/'
 export EDITOR=nvim
 
 # Ruby
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 source $PKGS_PREFIX/share/chruby/chruby.sh
 source $PKGS_PREFIX/share/chruby/auto.sh
 
@@ -126,7 +123,7 @@ helm-diff() {
 # Aliases
 alias delds="fd -H .DS_Store -x rm"
 alias dots='git --git-dir=$HOME/src/dotfiles --work-tree=$HOME'
-alias ls="exa -la --group-directories-first --icons"
+alias ls="eza -la --group-directories-first --icons"
 alias tf="terraform"
 alias g="git"
 

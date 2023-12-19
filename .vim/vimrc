@@ -8,6 +8,7 @@ endif
 call plug#begin('~/.vim/bundle')
 Plug 'romainl/vim-cool'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -15,7 +16,8 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'towolf/vim-helm'
+Plug 'towolf/vim-helm', { 'for': 'helm' }
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 Plug 'lilydjwg/colorizer', { 'on': 'ColorHighlight' }
 call plug#end()

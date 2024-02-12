@@ -1,6 +1,7 @@
 [user]
     name = Zheng He Hu
     email = aeonzh@hotmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGBzKH783mw5W78c8zkF31LXMjpDQnaOrBVqNVMXn7qx
 [core]
     excludesfile = ~/.gitignore
 [color]
@@ -11,10 +12,16 @@
 	defaultBranch = main
 [alias]
     gone = ! "git fetch --all --prune && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+[push]
+	autoSetupRemote = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[push]
-	default = current
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true

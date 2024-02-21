@@ -58,3 +58,45 @@ brew "terraform-ls"
 brew "chruby"
 brew "ruby-build"
 brew "watchman" # used by Sorbet for Ruby
+
+# Cask
+cask "1password"
+cask "docker"
+cask "font-fantasque-sans-mono-nerd-font"
+cask "kitty"
+cask "obs"
+cask "obsidian"
+cask "rectangle"
+cask "slack"
+cask "visual-studio-code"
+cask "zed"
+
+# VSCode
+## General
+vscode "Catppuccin.catppuccin-vsc"
+vscode "asvetliakov.vscode-neovim"
+vscode "aaron-bond.better-comments"
+vscode "eamodio.gitlens"
+vscode "esbenp.prettier-vscode"
+
+## Markdown"
+vscode "bierner.github-markdown-preview"
+vscode "yzhang.markdown-all-in-one"
+
+## Kubernetes"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
+vscode "Kubeshop.monokle"
+
+## Go"
+vscode "golang.go"
+
+## Ruby"
+vscode "Shopify.ruby-extensions-pack"
+vscode "misogi.ruby-rubocop"
+
+## YAML"
+vscode "redhat.vscode-yaml"
+
+## Terraform"
+vscode "hashicorp.terraform"

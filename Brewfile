@@ -80,6 +80,7 @@ vscode "asvetliakov.vscode-neovim"
 vscode "aaron-bond.better-comments"
 vscode "eamodio.gitlens"
 vscode "esbenp.prettier-vscode"
+vscode "GitHub.vscode-pull-request-github"
 
 ## Markdown"
 vscode "bierner.github-markdown-preview"

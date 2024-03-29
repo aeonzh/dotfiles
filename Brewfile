@@ -26,19 +26,10 @@ brew "z.lua"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
-# LSP
-brew "lua-language-server"
-brew "yaml-language-server"
-brew "terraform-ls"
-brew "helm-ls"
-brew "gopls"
-
-
 # Misc.
-brew "nvm"
 brew "pre-commit"
-brew "structurizr-cli"
 brew "trivy"
+brew "node"
 
 # Cloud
 brew "awscli"
@@ -68,9 +59,12 @@ brew "ruby-build"
 
 # Cask
 cask "1password"
+cask "amie"
 cask "docker"
 cask "font-fantasque-sans-mono-nerd-font"
+cask "github"
 cask "kitty"
+cask "microsoft-edge"
 cask "obs"
 cask "obsidian"
 cask "raindropio"
@@ -91,18 +85,24 @@ vscode "GitHub.vscode-pull-request-github"
 
 ## Markdown"
 vscode "bierner.github-markdown-preview"
+vscode "bierner.markdown-checkbox"
+vscode "bierner.markdown-emoji"
+vscode "bierner.markdown-footnotes"
+vscode "bierner.markdown-mermaid"
+vscode "bierner.markdown-preview-github-styles"
+vscode "bierner.markdown-yaml-preamble"
 vscode "yzhang.markdown-all-in-one"
 
 ## Kubernetes"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "Kubeshop.monokle"
+vscode "kubeshop.monokle-sarif"
 
 ## Go"
 vscode "golang.go"
 
 ## Ruby"
-vscode "Shopify.ruby-extensions-pack"
 vscode "misogi.ruby-rubocop"
 
 ## YAML"

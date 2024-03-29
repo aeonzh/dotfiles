@@ -2,6 +2,7 @@
 tap "hashicorp/tap"
 tap "cloudflare/cloudflare"
 tap "homebrew/cask-fonts"
+tap "homebrew/services"
 
 # Core
 brew "direnv"
@@ -18,11 +19,20 @@ brew "m1ddc"
 brew "neovim"
 brew "nnn"
 brew "ripgrep"
+brew "syncthing"
 brew "starship"
 brew "tree"
 brew "z.lua"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+
+# LSP
+brew "lua-language-server"
+brew "yaml-language-server"
+brew "terraform-ls"
+brew "helm-ls"
+brew "gopls"
+
 
 # Misc.
 brew "nvm"
@@ -44,7 +54,6 @@ brew "k9s"
 brew "kor"
 brew "krew"
 brew "kubeconform"
-brew "yaml-language-server"
 brew "yamllint"
 brew "yq"
 
@@ -52,12 +61,10 @@ brew "yq"
 brew "cloudflare/cloudflare/cf-terraforming"
 brew "hashicorp/tap/terraform"
 brew "terraform-docs"
-brew "terraform-ls"
 
 # Ruby
 brew "chruby"
 brew "ruby-build"
-brew "watchman" # used by Sorbet for Ruby
 
 # Cask
 cask "1password"

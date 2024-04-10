@@ -1,5 +1,9 @@
 # Homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ "$(uname)" == "Darwin" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 if type brew &>/dev/null; then
     PKGS_PREFIX=$(brew --prefix)
 fi
@@ -64,6 +68,7 @@ export EDITOR=nvim
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 source $PKGS_PREFIX/share/chruby/chruby.sh
 source $PKGS_PREFIX/share/chruby/auto.sh
+chruby ruby-3.1.3
 
 # Go
 export GOPATH=$HOME/go

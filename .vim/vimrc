@@ -9,13 +9,20 @@ call plug#begin('~/.vim/bundle')
 Plug 'romainl/vim-cool'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
-
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'VonHeikemen/lsp-zero.nvim'
+
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -24,7 +31,6 @@ Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'towolf/vim-helm', { 'for': 'helm' }
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 
 Plug 'lilydjwg/colorizer', { 'on': 'ColorHighlight' }
 call plug#end()

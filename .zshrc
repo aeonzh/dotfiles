@@ -46,13 +46,11 @@ n() {
     fi
 }
 
-export NNN_PLUG='o:preview-tui'
+export NNN_PLUG='o:preview-tui;j:autojump'
 
-# z.lua
-export _ZL_CMD=j
-export _ZL_DATA='~/.cache/z.lua'
-if [ -d $HOME/.nix-profile ]; then eval "$(z --init zsh enhanced once fzf)"; fi
-if type brew &>/dev/null; then eval "$(lua $PKGS_PREFIX/share/z.lua/z.lua --init zsh enhanced once fzf)"; fi
+# Zoxide
+export _ZO_DATA_DIR=$HOME/.local/share
+eval "$(zoxide init zsh --cmd j)"
 
 # autosuggestions
 source $PKGS_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh

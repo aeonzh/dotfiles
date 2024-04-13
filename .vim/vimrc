@@ -126,5 +126,6 @@ command! -bang -nargs=? -complete=dir Files
 set conceallevel=2
 let g:vim_markdown_conceal = 1
 
-" CircleCI
+" Filetypes
 autocmd BufRead,BufNewFile */.circleci/config.{yaml,yml} set ft=circleci-yaml
+autocmd BufRead,BufNewFile Brewfile set ft=ruby

@@ -5,7 +5,9 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 
 # Core
+brew "colima"
 brew "direnv"
+brew "docker"
 brew "eza"
 brew "fd"
 brew "findutils"
@@ -60,7 +62,6 @@ brew "ruby-build"
 # Cask
 cask "1password"
 cask "amie"
-cask "docker"
 cask "font-fantasque-sans-mono-nerd-font"
 cask "github"
 cask "kitty"

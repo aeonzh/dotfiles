@@ -67,6 +67,7 @@ require("lazy").setup({
             })
 
             lspconfig.lua_ls.setup {}
+            lspconfig.gopls.setup {}
             lspconfig.terraformls.setup {}
             lspconfig.yamlls.setup {
                 settings = {

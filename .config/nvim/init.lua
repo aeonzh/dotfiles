@@ -90,6 +90,7 @@ require("lazy").setup({
                     }
                 }
             }
+            lspconfig.ruby_ls.setup {}
 
             -- Custom Servers
             local configs = require("lspconfig.configs")

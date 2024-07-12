@@ -94,14 +94,35 @@ require("lazy").setup({
             -- Custom Servers
             local configs = require("lspconfig.configs")
 
+            -- CircleCI
             if not configs.cci then
                 local cci = "circleci-yaml-language-server"
                 local cci_pkg_path = require("mason-core.package").get_install_path(
                     require("mason-registry.").get_package(cci))
+                -- Get auth token from CircleCI CLI config file
+                function get_auth_token()
+                    local cli_config_filepath = os.getenv("HOME") .. "/.circleci/cli.yml"
+                    local cli_config_file = io.open(cli_config_filepath, "r")
+                    if not cli_config_file then return nil end
+                    cli_config_file:close()
+
+                    for line in io.lines(cli_config_filepath) do
+                        for token in line:gmatch("token: (.*)") do
+                            return token
+                        end
+                    end
+                end
+
                 configs.cci = {
                     default_config = {
                         cmd = { cci, "--schema", cci_pkg_path .. "/schema.json", "--stdio" },
                         on_attach = lsp_zero.default_keymaps({ buffer = bufnr }),
+                        on_init = function(client, results)
+                            client.request('workspace/executeCommand', {
+                                command = "setToken",
+                                arguments = { get_auth_token() }
+                            })
+                        end,
                         root_dir = lspconfig.util.find_git_ancestor,
                         filetypes = { "circleci-yaml" },
                         settings = {}

@@ -44,7 +44,7 @@ require("lazy").setup({
 
             require("mason").setup({})
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "gopls", "terraformls", "yamlls", "helm_ls", "ruby_ls" },
+                ensure_installed = { "lua_ls", "gopls", "terraformls", "yamlls", "helm_ls", "ruby_lsp" },
                 handlers = {
                     lsp_zero.default_setup,
                     lua_ls = function()
@@ -90,7 +90,7 @@ require("lazy").setup({
                     }
                 }
             }
-            lspconfig.ruby_ls.setup {}
+            lspconfig.ruby_lsp.setup {}
 
             -- Custom Servers
             local configs = require("lspconfig.configs")

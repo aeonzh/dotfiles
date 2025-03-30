@@ -14,3 +14,26 @@ cat ~/Brewfile* | brew bundle
 
 # or alternatively choose only the files you intend to include
 ```
+
+## WSL
+
+### ZSH
+
+```sh
+sudo vi /etc/shells
+```
+
+Add
+```sh
+/home/linuxbrew/.linuxbrew/bin/zsh
+```
+
+Run
+```sh
+chsh -s $(which zsh)
+```
+
+Restart WSL
+```sh
+wsl --shutdonw
+```

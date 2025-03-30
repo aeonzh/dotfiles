@@ -1,0 +1,35 @@
+# General
+vscode "catppuccin.catppuccin-vsc"
+vscode "catppuccin.catppuccin-vsc-icons"
+vscode "aaron-bond.better-comments"
+vscode "eamodio.gitlens"
+vscode "esbenp.prettier-vscode"
+vscode "github.vscode-pull-request-github"
+vscode "github.copilot"
+vscode "github.copilot-chat"
+
+# Markdown
+vscode "bierner.github-markdown-preview"
+vscode "bierner.markdown-checkbox"
+vscode "bierner.markdown-emoji"
+vscode "bierner.markdown-footnotes"
+vscode "bierner.markdown-mermaid"
+vscode "bierner.markdown-preview-github-styles"
+vscode "bierner.markdown-yaml-preamble"
+vscode "yzhang.markdown-all-in-one"
+
+# Go
+vscode "golang.go"
+
+# React Native
+vscode "expo.vscode-expo-tools"
+
+# Ruby
+vscode "misogi.ruby-rubocop"
+vscode "shopify.ruby-lsp"
+
+# Vue
+vscode "vitest.explorer"
+vscode "vue.volar"
+
+

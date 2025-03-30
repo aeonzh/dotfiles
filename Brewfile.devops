@@ -1,0 +1,35 @@
+tap "hashicorp/tap"
+tap "cloudflare/cloudflare"
+
+brew "trivy"
+brew "awscli"
+brew "circleci"
+
+# Containers
+brew "argocd"
+brew "chart-testing"
+brew "docker"
+brew "docker-buildx"
+brew "docker-compose"
+brew "helm"
+brew "k3d"
+brew "k9s"
+brew "kor"
+brew "krew"
+brew "kubeconform"
+brew "yamllint"
+brew "yq"
+
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
+vscode "redhat.vscode-yaml"
+
+# Terraform
+brew "cloudflare/cloudflare/cf-terraforming"
+brew "hashicorp/tap/terraform"
+brew "terraform-docs"
+
+vscode "hashicorp.terraform"
+
+vscode "aquasecurityofficial.trivy-vulnerability-scanner"
+vscode "circleci.circleci"

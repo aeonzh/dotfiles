@@ -1,0 +1,22 @@
+tap "homebrew/cask-fonts"
+
+brew "colima"
+brew "libpq"
+brew "m1ddc"
+brew "qemu"
+
+# Cask
+cask "1password"
+cask "docker"
+cask "font-fantasque-sans-mono-nerd-font"
+cask "github"
+cask "kitty"
+cask "microsoft-edge"
+cask "obs"
+cask "obsidian"
+cask "raindropio"
+cask "raycast"
+cask "rectangle"
+cask "slack"
+cask "visual-studio-code"
+cask "zed"

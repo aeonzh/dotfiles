@@ -1,10 +1,6 @@
 tap "hashicorp/tap"
 tap "cloudflare/cloudflare"
 
-brew "trivy"
-brew "awscli"
-brew "circleci"
-
 # Containers
 brew "argocd"
 brew "chart-testing"
@@ -30,6 +26,11 @@ brew "hashicorp/tap/terraform"
 brew "terraform-docs"
 
 vscode "hashicorp.terraform"
+
+# Other
+brew "awscli"
+brew "trivy"
+brew "circleci"
 
 vscode "aquasecurityofficial.trivy-vulnerability-scanner"
 vscode "circleci.circleci"

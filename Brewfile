@@ -32,7 +32,6 @@ brew "zsh-syntax-highlighting"
 # Misc.
 brew "pre-commit"
 brew "trivy"
-brew "node"
 
 # Cloud
 brew "awscli"
@@ -56,17 +55,12 @@ brew "cloudflare/cloudflare/cf-terraforming"
 brew "hashicorp/tap/terraform"
 brew "terraform-docs"
 
-# Ruby
-brew "chruby"
-brew "ruby-build"
-
 # Cask
 cask "1password"
 cask "font-fantasque-sans-mono-nerd-font"
 cask "github"
 cask "kitty"
 cask "microsoft-edge"
-cask "notion"
 cask "obs"
 cask "obsidian"
 cask "raindropio"

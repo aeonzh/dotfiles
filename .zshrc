@@ -62,20 +62,14 @@ source $PKGS_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export VIMCONFIG=$HOME'/.vim/'
 export EDITOR=nvim
 
-# Ruby
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
-source $PKGS_PREFIX/share/chruby/chruby.sh
-source $PKGS_PREFIX/share/chruby/auto.sh
-chruby ruby-3.1.3
+# Asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export ASDF_NODEJS_VERSION=22.14.0
+export ASDF_RUBY_VERSION=3.3.7
 
 # Go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
-
-# Add to prompt with precmd
-if [[ ! "$precmd_functions" == *chruby_auto* ]]; then
-    precmd_functions+=("chruby_auto")
-fi
 
 # Kubernetes
 alias k="kubectl"

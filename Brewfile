@@ -29,3 +29,8 @@ brew "pre-commit"
 brew "asdf"
 brew "pnpm"
 brew "go"
+
+brew "gopls"
+brew "lua-language-server"
+brew "ruby-lsp"
+brew "typescript-language-server"

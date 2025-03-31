@@ -34,3 +34,8 @@ brew "circleci"
 
 vscode "aquasecurityofficial.trivy-vulnerability-scanner"
 vscode "circleci.circleci"
+
+# LSP
+brew "helm-ls"
+brew "terraform-ls"
+brew "yaml-languague-server"

@@ -27,7 +27,7 @@ require("lazy").setup({
 
     { "sindrets/diffview.nvim" },
 
-    { dir = "/home/linuxbrew/.linuxbrew/opt/fzf" },
+    { dir = vim.fn.system({ "brew", "--prefix" }):gsub("%s+$", "") .. "/opt/fzf" },
     { "junegunn/fzf.vim" },
     { "junegunn/vim-peekaboo" },
     {
@@ -45,9 +45,7 @@ require("lazy").setup({
     },
 })
 
-vim.cmd([[
-    source $HOME/.vim/vimrc
-]])
+vim.cmd([[ source $HOME/.vim/vimrc ]])
 
 vim.lsp.enable({ 'luals', 'gopls', 'ruby-lsp', 'ts-ls' })
 
@@ -57,6 +55,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local autocmd = vim.api.nvim_create_autocmd
 
         if client:supports_method('textDocument/completion') then
+            local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+            autocmd({ 'TextChangedI' }, {
+                buffer = args.buf,
+                callback = function()
+                    vim.lsp.completion.get()
+                end
+            })
+            client.server_capabilities.completionProvider.triggerCharacters = chars
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
         end
 

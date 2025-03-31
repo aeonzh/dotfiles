@@ -14,6 +14,7 @@ set showmatch
 set splitright splitbelow
 set wildmenu
 set wildmode=list:longest,full
+set completeopt+=menu,noinsert,popup,fuzzy
 runtime macros/matchit.vim
 
 " -- Tab --
@@ -54,10 +55,6 @@ set cursorline                  " Highlight current line
 set signcolumn=yes              " For CoC signs
 set scrolloff=5                 " Display at least 5 lines around your cursor (for scrolling)
 set laststatus=2
-
-if has('termguicolors')
-  set termguicolors
-endif
 
 colorscheme catppuccin
 set background=dark
@@ -128,4 +125,4 @@ let g:vim_markdown_conceal = 1
 
 " Filetypes
 autocmd BufRead,BufNewFile */.circleci/config.{yaml,yml} set ft=circleci-yaml
-autocmd BufRead,BufNewFile Brewfile set ft=ruby
+autocmd BufRead,BufNewFile Brewfile* set ft=ruby

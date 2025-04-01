@@ -32,5 +32,4 @@ brew "go"
 
 brew "gopls"
 brew "lua-language-server"
-brew "ruby-lsp"
 brew "typescript-language-server"

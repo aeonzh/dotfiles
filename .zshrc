@@ -31,8 +31,12 @@ setopt SHARE_HISTORY
 
 # FZF
 eval "$(fzf --zsh)"
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow"
-export FZF_DEFAULT_OPTS='--color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--color=border:#313244,label:#cdd6f4"
 
 # NNN
 n() {
@@ -64,8 +68,6 @@ export EDITOR=nvim
 
 # Asdf
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-export ASDF_NODEJS_VERSION=22.14.0
-export ASDF_RUBY_VERSION=3.3.7
 
 # Go
 export GOPATH=$HOME/go

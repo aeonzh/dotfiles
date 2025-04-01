@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    { "romainl/vim-cool" },
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -28,21 +27,9 @@ require("lazy").setup({
     { "sindrets/diffview.nvim" },
 
     { dir = vim.fn.system({ "brew", "--prefix" }):gsub("%s+$", "") .. "/opt/fzf" },
-    { "junegunn/fzf.vim" },
+    { "ibhagwan/fzf-lua" },
     { "junegunn/vim-peekaboo" },
-    {
-        "junegunn/goyo.vim",
-        ft = "markdown"
-    },
 
-    {
-        "plasticboy/vim-markdown",
-        ft = "markdown"
-    },
-    {
-        "towolf/vim-helm",
-        ft = "helm"
-    },
 })
 
 vim.cmd([[ source $HOME/.vim/vimrc ]])
